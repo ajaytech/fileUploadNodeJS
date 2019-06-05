@@ -33,7 +33,7 @@ var storage = multer.diskStorage({
 });
 
 //var upload = multer({ storage: storage }).single("myFileUpload");
-var upload = multer({ storage: storage }).single("myFileUpload");
+var upload = multer({ storage: storage }).single("uploadCollection");
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
@@ -50,6 +50,7 @@ app.post("/api/photo", function(req, res) {
       return res.end("Error uploading file.");
     }
     console.log("Success inside upload");
+    res.status(200).send('Success');
     res.end("File is uploaded");
   });
 });
